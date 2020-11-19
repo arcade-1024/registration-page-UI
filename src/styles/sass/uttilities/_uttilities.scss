@@ -1,0 +1,18 @@
+.transition {
+	&-x-0 {
+		transform: translateX(0);
+	}
+	&-x-400 {
+		transform: translateX(450px) !important;
+	}
+}
+.pointer-events {
+	&-none {
+		pointer-events: none;
+	}
+}
+.p {
+	&-r-10 {
+		margin-right: 10px;
+	}
+}

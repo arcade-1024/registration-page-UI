@@ -1,26 +1,50 @@
 import React, { useState, useRef } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 //icons
 import { BiUserCircle, BiLockOpenAlt } from "react-icons/bi";
 import { BsEyeFill, BsEyeSlashFill } from "react-icons/bs";
 import { FaArrowRight, FaFacebookF, FaGoogle, FaTwitter } from "react-icons/fa";
 
-export interface LoginComponet {
+//components
+// import Message from "../components/Message";
+
+export interface LoginPageInterface {
 	name?: string;
 	password?: string;
+	setSignup?: Function;
 }
 
-const LoginPage = ({ name, password }: LoginComponet) => {
+const LoginPage = ({ name, password, setSignup }: LoginPageInterface) => {
 	const history = useHistory();
+
+	const passwordRef = useRef<HTMLInputElement>(null);
+
+	const usernameRef = useRef<HTMLInputElement>(null);
+
+	const [passVisible, setPassVisible] = useState(false);
+
+	// const [messageShow, setMessageShow] = useState(false);
 
 	const formSubmitHandler = (e: any) => {
 		e.preventDefault();
 		// setName(e.target.username.value);
-		history.push(`/home`);
+		if (
+			usernameRef.current?.value === name &&
+			passwordRef.current?.value === password
+		) {
+			history.push(`/home`);
+		} else {
+			console.log("Error");
+		}
 	};
-	const passwordRef = useRef<HTMLInputElement>(null);
-	const [passVisible, setPassVisible] = useState(false);
+	const setSignUpType = (e: any) => {
+		//@ts-ignore
+		const classNameSting = e.target.classList[0];
+		// @ts-ignore
+		setSignup(classNameSting);
+		history.push(`/signup`);
+	};
 	const togglePasswordVisibility = () => {
 		setPassVisible(!passVisible);
 		if (passwordRef.current?.type === "password") {
@@ -42,6 +66,7 @@ const LoginPage = ({ name, password }: LoginComponet) => {
 						name="username"
 						placeholder="Name"
 						className="LoginPage-icons-input"
+						ref={usernameRef}
 					/>
 				</div>
 				<div className="LoginPage-icons">
@@ -72,20 +97,29 @@ const LoginPage = ({ name, password }: LoginComponet) => {
 				</button>
 			</form>
 
-			<Link className="LoginPage-Link" to="/signup">
+			<div className="LoginPage-Link" onClick={setSignUpType}>
 				<p>Sign up</p>
-			</Link>
+			</div>
 			<p className="LoginPage-seperator-signup">
 				<span>with</span>
 			</p>
 			<div className="LoginPage-signup-social">
-				<div className="LoginPage-signup-social-icons LoginPage-signup-social-icon-facebook">
+				<div
+					className="facebook-button LoginPage-signup-social-icons LoginPage-signup-social-icon-facebook"
+					onClick={setSignUpType}
+				>
 					<FaFacebookF className="facebook" size={20} />
 				</div>
-				<div className="LoginPage-signup-social-icons LoginPage-signup-social-icon-google">
+				<div
+					className="gmail-button LoginPage-signup-social-icons LoginPage-signup-social-icon-google"
+					onClick={setSignUpType}
+				>
 					<FaGoogle className="google" size={20} />
 				</div>
-				<div className="LoginPage-signup-social-icons LoginPage-signup-social-icon-twitter">
+				<div
+					className="twitter-button LoginPage-signup-social-icons LoginPage-signup-social-icon-twitter"
+					onClick={setSignUpType}
+				>
 					<FaTwitter className="twitter" size={20} />
 				</div>
 			</div>

@@ -7,11 +7,11 @@
 	// justify-content: center;
 	padding-top: 10%;
 	align-items: center;
-	font-family: "Montserrat", sans-serif;
 	&-Link {
 		text-decoration: none;
 		color: #000;
 		margin: 10px 0;
+		cursor: pointer;
 	}
 	&-greet {
 		font-size: 6rem;
@@ -126,12 +126,15 @@
 			cursor: pointer;
 			& .facebook {
 				fill: $facebook;
+				pointer-events: none;
 			}
 			& .google {
 				fill: $google;
+				pointer-events: none;
 			}
 			& .twitter {
 				fill: $twitter;
+				pointer-events: none;
 			}
 		}
 		&-icon-facebook {
