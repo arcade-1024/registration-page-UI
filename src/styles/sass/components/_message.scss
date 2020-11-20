@@ -1,17 +1,39 @@
 .message {
 	display: flex;
 	flex-direction: row;
+	align-items: center;
 	position: absolute;
+	background: rgb(235, 235, 235);
+	box-shadow: 0 5px 10px #555;
+	padding: 0 10px;
+	border-radius: 5px;
 	top: 10px;
-	z-index: 50;
+	left: 50%;
+	transition: all 0.4s;
+	animation: slideIn 0.5s forwards;
+	transform: translate(-50%, 0);
+	z-index: 100;
+	height: 50px;
 	&-icon {
 		height: 20px;
 		width: 20px;
+		border-radius: 50%;
 		display: flex;
 		justify-content: center;
 		align-items: center;
 	}
 	&-text {
+		margin: 0;
+		padding: 0 !important;
 		margin-left: 5px;
+	}
+}
+
+@keyframes slideIn {
+	0% {
+		transform: translateY(-50px) translate(-50%, 0);
+	}
+	100% {
+		transform: translateY(0px) translate(-50%, 0);
 	}
 }

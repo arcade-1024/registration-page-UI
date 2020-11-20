@@ -24,7 +24,13 @@ const LoginPage = ({ name, password, setSignup }: LoginPageInterface) => {
 
 	const [passVisible, setPassVisible] = useState(false);
 
-	// const [messageShow, setMessageShow] = useState(false);
+	const [messageShow, setMessageShow] = useState(false);
+
+	const messageDisappear = () => {
+		setTimeout(() => {
+			setMessageShow(false);
+		}, 3000);
+	};
 
 	const formSubmitHandler = (e: any) => {
 		e.preventDefault();
@@ -35,7 +41,8 @@ const LoginPage = ({ name, password, setSignup }: LoginPageInterface) => {
 		) {
 			history.push(`/home`);
 		} else {
-			<Message message="Hello" show={true} type={"error"}/>
+			setMessageShow(true);
+			messageDisappear();
 		}
 	};
 	const setSignUpType = (e: any) => {
@@ -100,6 +107,15 @@ const LoginPage = ({ name, password, setSignup }: LoginPageInterface) => {
 			<div className="LoginPage-Link" onClick={setSignUpType}>
 				<p>Sign up</p>
 			</div>
+			{messageShow ? (
+				<Message
+					message="wrong credential"
+					type={"error"}
+				
+				/>
+			) : (
+				""
+			)}
 			<p className="LoginPage-seperator-signup">
 				<span>with</span>
 			</p>
