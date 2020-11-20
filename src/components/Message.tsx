@@ -1,4 +1,4 @@
-import React  from "react";
+import React from "react";
 import { FiX, FiCheck } from "react-icons/fi";
 export interface MessageComponent {
 	type: string;
@@ -19,7 +19,8 @@ const Message = ({ type, message, show }: MessageComponent) => {
 	);
 	return (
 		<div className="message">
-			{type === "success" ? success : error} <p className="message-text">{message}</p>
+			{type === "success" ? success : error}
+			<p className="message-text">{message}</p>
 		</div>
 	);
 };

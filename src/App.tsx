@@ -32,7 +32,9 @@ function App() {
 				<Route
 					exact={true}
 					path="/home"
-					component={() => <HomePage name={username} email={Email} phoneNumber={phone} />}
+					component={() => (
+						<HomePage name={username} email={Email} phoneNumber={phone} />
+					)}
 				/>
 				<Route
 					exact={true}

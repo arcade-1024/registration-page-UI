@@ -7,7 +7,7 @@ import { BsEyeFill, BsEyeSlashFill } from "react-icons/bs";
 import { FaArrowRight, FaFacebookF, FaGoogle, FaTwitter } from "react-icons/fa";
 
 //components
-// import Message from "../components/Message";
+import Message from "../components/Message";
 
 export interface LoginPageInterface {
 	name?: string;
@@ -35,7 +35,7 @@ const LoginPage = ({ name, password, setSignup }: LoginPageInterface) => {
 		) {
 			history.push(`/home`);
 		} else {
-			console.log("Error");
+			<Message message="Hello" show={true} type={"error"}/>
 		}
 	};
 	const setSignUpType = (e: any) => {
