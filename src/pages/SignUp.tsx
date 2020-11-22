@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { FaFacebookF, FaGoogle, FaTwitter } from "react-icons/fa";
-
+import TextField from "@material-ui/core/TextField/TextField";
 
 export interface SignUpInterface {
 	setUserName?: Function;
@@ -17,12 +17,14 @@ const SignUp = ({
 	signUpType,
 }: SignUpInterface) => {
 	const history = useHistory();
-	const userNameRef = useRef<HTMLInputElement>(null);
+	const userNameRef = useRef(null);
 	const passwordRef = useRef<HTMLInputElement>(null);
 	const emailRef = useRef<HTMLInputElement>(null);
 
 	const submitHandler = (e: any) => {
 		e.preventDefault();
+
+
 		//@ts-ignore
 		setUserName(userNameRef.current?.value);
 		// @ts-ignore
@@ -69,42 +71,28 @@ const SignUp = ({
 			<div className="Information-title">{topText}</div>
 			<form className="Information-form" onSubmit={submitHandler}>
 				<div className="Information-form-group">
-					<label htmlFor="fullName">{Name}</label>
-					<input
-						type="text"
-						name="fullName"
-						className="Information-form-input"
-						autoComplete="off"
-						ref={userNameRef}
+					<TextField id="full-name" label={`${Name}`} inputRef={userNameRef} />
+				</div>
+				<div className="Information-form-group">
+					<TextField
+						id="Email-address"
+						label={`Email Address`}
+						inputRef={emailRef}
 					/>
 				</div>
 				<div className="Information-form-group">
-					<label htmlFor="address">Email Address</label>
-					<input
-						type="email"
-						name="address"
-						className="Information-form-input"
-						autoComplete="off"
-						ref={emailRef}
+					<TextField
+						id="New-passw0rd"
+						label={`New Password`}
+						type={"password"}
+						inputRef={passwordRef}
 					/>
 				</div>
 				<div className="Information-form-group">
-					<label htmlFor="password">New password</label>
-					<input
-						type="password"
-						name="password"
-						className="Information-form-input"
-						autoComplete="off"
-					/>
-				</div>
-				<div className="Information-form-group">
-					<label htmlFor="password">Confirm Password</label>
-					<input
-						type="password"
-						name="password"
-						className="Information-form-input"
-						autoComplete="off"
-						ref={passwordRef}
+					<TextField
+						id="confirm-password"
+						type={"password"}
+						label={`Confirm Passord`}
 					/>
 				</div>
 				<button type="submit" className="Information-form-btn">

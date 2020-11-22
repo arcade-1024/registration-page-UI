@@ -7,9 +7,9 @@ import SideBar from "../components/SideBar";
 export interface NavbarComponent {
 	name: String;
 	email: String;
-	phone: String
+	phone: String;
 }
-const Navbar = ({ name, email,phone }: NavbarComponent) => {
+const Navbar = ({ name, email, phone }: NavbarComponent) => {
 	const [showSideBar, setShowSideBar] = useState(false);
 
 	const toggleSideBar = () => {
@@ -23,20 +23,12 @@ const Navbar = ({ name, email,phone }: NavbarComponent) => {
 				</div>
 				<ul className="navbar-link">
 					<li className="navbar-link-items">
-						<Link className="navbar-link-items-tag" to="/lib">
+						<Link className="navbar-link-items-tag" to="/home">
 							Home
 						</Link>
 					</li>
-					<li className="navbar-link-items">
-						<Link className="navbar-link-items-tag" to="/discover">
-							Discover
-						</Link>
-					</li>
-					<li className="navbar-link-items">
-						<Link className="navbar-link-items-tag" to="/collection">
-							My Collections
-						</Link>
-					</li>
+					<li className="navbar-link-items">Discover</li>
+					<li className="navbar-link-items">Collections</li>
 				</ul>
 				<div className="navbar-user">
 					<p className="navbar-user-name">{name}</p>
