@@ -34,11 +34,15 @@ const LoginPage = ({ name, password, setSignup }: LoginPageInterface) => {
 
 	const formSubmitHandler = (e: any) => {
 		e.preventDefault();
-		console.log(name[1]);
 
 		if (
 			usernameRef.current?.value === name[0] &&
 			passwordRef.current?.value === password[0]
+		) {
+			history.push(`/home`);
+		} else if (
+			usernameRef.current?.value === name[1] &&
+			passwordRef.current?.value === password[1]
 		) {
 			history.push(`/home`);
 		} else {
