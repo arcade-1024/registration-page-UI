@@ -10,8 +10,8 @@ import { FaArrowRight, FaFacebookF, FaGoogle, FaTwitter } from "react-icons/fa";
 import Message from "../components/Message";
 
 export interface LoginPageInterface {
-	name?: string;
-	password?: string;
+	name?: any;
+	password?: any;
 	setSignup?: Function;
 }
 
@@ -34,10 +34,11 @@ const LoginPage = ({ name, password, setSignup }: LoginPageInterface) => {
 
 	const formSubmitHandler = (e: any) => {
 		e.preventDefault();
-		// setName(e.target.username.value);
+		console.log(name[1]);
+
 		if (
-			usernameRef.current?.value === name &&
-			passwordRef.current?.value === password
+			usernameRef.current?.value === name[0] &&
+			passwordRef.current?.value === password[0]
 		) {
 			history.push(`/home`);
 		} else {
@@ -107,15 +108,7 @@ const LoginPage = ({ name, password, setSignup }: LoginPageInterface) => {
 			<div className="LoginPage-Link" onClick={setSignUpType}>
 				<p>Sign up</p>
 			</div>
-			{messageShow ? (
-				<Message
-					message="wrong credential"
-					type={"error"}
-				
-				/>
-			) : (
-				""
-			)}
+			{messageShow ? <Message message="wrong credential" type={"error"} /> : ""}
 			<p className="LoginPage-seperator-signup">
 				<span>with</span>
 			</p>

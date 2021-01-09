@@ -6,7 +6,7 @@ export interface MessageComponent {
 	className?: string;
 }
 
-const Message = ({ type, message,className }: MessageComponent) => {
+const Message = ({ type, message, className }: MessageComponent) => {
 	const success = (
 		<div className="message-icon" style={{ backgroundColor: "#52c41a" }}>
 			<FiCheck size="12px" stroke="white" />
@@ -26,3 +26,7 @@ const Message = ({ type, message,className }: MessageComponent) => {
 };
 
 export default Message;
+export interface ListItemComponent {
+	itemName?: string;
+}
+

@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./styles/css/index.css";
-// import Button from "@material-ui/core/Button";
-import { Route, BrowserRouter } from "react-router-dom";
 
+import { Route, BrowserRouter } from "react-router-dom";
+import axios from "axios";
 //pages
 import LoginPage from "./pages/LoginPage";
 import HomePage from "./pages/HomePage";
@@ -10,11 +10,22 @@ import SignUp from "./pages/SignUp";
 import SuccessPage from "./pages/SuccessPage";
 
 function App() {
-	const [username, setUsername] = useState("admin");
+	const [username, setUsername] = useState(["John", "MICKY"]);
 	const [Email, setEmailAddress] = useState("admin@gmail.com");
-	const [password, setPassword] = useState("12345");
+	const [password, setPassword] = useState(["12345", "98765"]);
+	// eslint-disable-next-line
 	const [phone, SetPhone] = useState("9999887766");
 	const [sigupType, setSignUpType] = useState("");
+
+	useEffect(() => {
+		const fetchData = async () => {
+			const result = await axios(
+				`https://api.github.com/repositories/19438/issues`
+			);
+			console.log(result.data[0]);
+		};
+		fetchData();
+	}, []);
 	return (
 		<div className="App">
 			<BrowserRouter>
